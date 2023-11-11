@@ -11,10 +11,38 @@
 <body class="bg-gray-100">
     <header class="p-5 border-b bg-white shadow">
         <div class="container mx-auto flex justify-between items-center">
-            <h1
-                class="text-3xl font-mono font-black ml-2 underline cursor-none">DevStagram</h1>
-            <nav class="flex gap-2 items-center">
-                <a href="#" class="font-mono font-bold uppercase inline-block hover:text-fuchsia-600 text-fuchsia-400 text-sm relative transition-all duration-500
+            <h1 class="text-3xl font-mono font-black ml-2 underline cursor-none">DevStagram</h1>
+
+            @auth
+                <p class="text-sm font-mono font-bold text-gray-500">Hola, <span
+                        class="font-mono font-bold  inline-block hover:text-fuchsia-600 text-fuchsia-400 text-sm">{{ auth()->user()->username }}</span>
+                </p>
+
+                <a href="">
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit"
+                            class="font-mono font-bold uppercase inline-block hover:text-sky-600 text-sky-400 text-sm relative transition-all duration-500
+                    before:content-['']
+                    before:absolute
+                    before:-bottom-2
+                    before:left-0
+                    before:w-0
+                    before:h-1
+                    before:transition-all
+                    before:duration-500
+                    before:bg-sky-400
+                    before:rounded-full
+                    hover:before:w-full
+                    hover:before:opacity-100">Cerrar sesión</button>
+                    </form>
+                </a>
+            @endauth
+
+            @guest
+                <nav class="flex gap-2 items-center">
+                    <a href="{{ route('login') }}"
+                        class="font-mono font-bold uppercase inline-block hover:text-fuchsia-600 text-fuchsia-400 text-sm relative transition-all duration-500
                     before:content-['']
                     before:absolute
                     before:-bottom-2
@@ -27,7 +55,8 @@
                     before:rounded-full
                     hover:before:w-full
                     hover:before:opacity-100">Login</a>
-                <a href=" {{ route('register') }}" class="font-mono font-bold uppercase inline-block text-sky-400 hover:text-sky-600 text-sm relative transition-all duration-500
+                    <a href=" {{ route('register') }}"
+                        class="font-mono font-bold uppercase inline-block text-sky-400 hover:text-sky-600 text-sm relative transition-all duration-500
                     before:content-['']
                     before:absolute
                     before:-bottom-2
@@ -40,7 +69,12 @@
                     before:rounded-full
                     hover:before:w-full
                     hover:before:opacity-100">Crear cuenta</a>
-            </nav>
+                </nav>
+
+            @endguest
+
+
+
         </div>
     </header>
 

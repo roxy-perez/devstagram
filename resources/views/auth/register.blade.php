@@ -55,8 +55,7 @@
                     <label for="password" class="mb-2 block uupercase text-gray-500 font-bold">Password</label>
                     <input type="password" id="password" name="password" placeholder="Tu contraseña"
                         class="border rounded-lg border-fuchsia-300 p-2 w-full
-                        @error('password') border-red-500 @enderror"
-                        value="{{ old('password') }}">
+                        @error('password') border-red-500 @enderror">
 
                     @error('password')
                         <span class="bg-red-400 text-white my-2 rounded-lg p-2 text-sm text-center w-full">{{ $message }}</span>
