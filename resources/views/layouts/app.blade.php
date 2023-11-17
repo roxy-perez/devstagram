@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @stack('styles')
     <title>DevStagram - @yield('title')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -28,9 +29,9 @@
                     </a>
 
 
-                    <p class="text-sm font-mono font-bold text-gray-500 mx-2">| Hola, <span
+                    <a class="text-sm font-mono font-bold text-gray-500 mx-2" href="{{ route('posts.index', auth()->user()->username) }}">| Hola, <span
                             class="font-mono font-bold  inline-block hover:text-fuchsia-600 text-fuchsia-400 text-sm">{{ auth()->user()->username }} |</span>
-                    </p>
+                    </a>
 
                     <a href="">
                         <form action="{{ route('logout') }}" method="POST">

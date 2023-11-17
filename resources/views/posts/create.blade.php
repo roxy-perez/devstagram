@@ -4,9 +4,18 @@
     Crear una nueva publicación
 @endsection
 
+@push('styles')
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+@endpush
+
 @section('content')
     <div class="md:flex md:items-center">
-        <div class="md:w-1/2 px-10">Imagen aquí</div>
+        <div class="md:w-1/2 px-10">
+            <form id="dropzone" action=" {{ route('images.store') }}" method="POST" enctype="multipart/form-data"
+                class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
+                @csrf
+            </form>
+        </div>
         <div class="md:w-1/2 p-5 bg-sky-200 rounded-lg shadow-lg mt-10 md:mt-0">
             <form action="{{ route('register') }}" method="POST" novalidate>
                 @csrf
@@ -37,7 +46,7 @@
                 </div>
 
                 <input type="submit" value="Crear publicación"
-                class="bg-fuchsia-400 hover:bg-fuchsia-600 transition-colors cursor-pointer uppercase w-full p-2 border rounded-lg text-white font-bold">
+                    class="bg-fuchsia-400 hover:bg-fuchsia-600 transition-colors cursor-pointer uppercase w-full p-2 border rounded-lg text-white font-bold">
             </form>
         </div>
 
