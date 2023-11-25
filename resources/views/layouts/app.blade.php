@@ -15,7 +15,7 @@
             <h1 class="text-3xl font-mono font-black ml-2 underline cursor-none">DevStagram</h1>
 
             @auth
-                <nav class="flex gap-2 items-center">
+                <nav class="flex gap-2 items-center" aria-label="">
                     <a class="flex items-center gap-2 bg-white border-2 rounded-full text-fuchsia-600 text-sm uppercase font-bold cursor-pointer px-2 py-1 hover:bg-fuchsia-600 hover:text-white transition-all duration-500"
                         href="{{ route('posts.create') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -59,7 +59,7 @@
             @endauth
 
             @guest
-                <nav class="flex gap-2 items-center">
+                <nav class="flex gap-2 items-center" aria-label="">
                     <a href="{{ route('login') }}"
                         class="font-mono font-bold uppercase inline-block hover:text-fuchsia-600 text-fuchsia-400 text-sm relative transition-all duration-500
                     before:content-['']
