@@ -27,12 +27,12 @@
     <section class="container mx-auto mt-10">
         <h2 class="text-center text-4xl font-bold text-gray-800 my-10">Publicaciones</h2>
         @if ($posts->count())
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-start">
+            <div class="flex md:flex-cols-2 lg:grid-cols-3 xl:flex-cols-4 justify-center gap-4">
                 @foreach ($posts as $post)
                     <div>
-                        <a>
+                        <a href="{{ route('posts.show', $post) }}">
                             <img src="{{ asset('uploads') . '/' . $post->image }}" alt="Imagen del post {{ $post->titile }}"
-                                class="rounded-2xl ring-2 ring-sky-500">
+                                class="rounded-2xl ring-2 ring-sky-500 object-cover h-48 w-48">
                         </a>
                     </div>
                 @endforeach
