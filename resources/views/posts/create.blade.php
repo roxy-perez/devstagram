@@ -16,11 +16,11 @@
                 @csrf
             </form>
         </div>
-        <div class="md:w-1/2 p-5 bg-sky-200 rounded-lg shadow-lg mt-10 md:mt-0">
+        <div class="md:w-1/2 p-5 bg-slate-200 rounded-lg shadow-lg mt-10 md:mt-0">
             <form action="{{ route('posts.store') }}" method="POST" novalidate>
                 @csrf
                 <div class="mb-5">
-                    <label for="title" class="mb-2 block uupercase text-gray-500 font-bold">Título</label>
+                    <label for="title" class="mb-2 block uppercase text-gray-500 font-bold">Título</label>
                     <input type="text" id="title" name="title" placeholder="Título de la publicación"
                         class="border rounded-lg border-fuchsia-300 p-2 w-full"
                     @error('title') @enderror
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="mb-5">
-                    <label for="description" class="mb-2 block uupercase text-gray-500 font-bold">Descripción</label>
+                    <label for="description" class="mb-2 block uppercase text-gray-500 font-bold">Descripción</label>
                     <textarea type="text" id="description" name="description" placeholder="Descripción de la publicación"
                         class="text-left border rounded-lg border-fuchsia-300 p-2 w-full" @error('description') @enderror>
                         {{ old('description') }}
@@ -51,7 +51,7 @@
                 </div>
 
                 <input type="submit" value="Crear publicación"
-                    class="bg-fuchsia-400 hover:bg-fuchsia-600 transition-colors cursor-pointer uppercase w-full p-2 border rounded-lg text-white font-bold">
+                    class="bg-fuchsia-400 hover:bg-sky-600 transition-colors cursor-pointer uppercase w-full p-2 border rounded-lg text-white font-bold">
             </form>
         </div>
 

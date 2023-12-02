@@ -30,7 +30,7 @@
             <div class="flex md:flex-cols-2 lg:grid-cols-3 xl:flex-cols-4 justify-center gap-4">
                 @foreach ($posts as $post)
                     <div>
-                        <a href="{{ route('posts.show', $post) }}">
+                        <a href="{{ route('posts.show', ['post' => $post, 'user' => $user]) }}">
                             <img src="{{ asset('uploads') . '/' . $post->image }}" alt="Imagen del post {{ $post->titile }}"
                                 class="rounded-2xl ring-2 ring-sky-500 object-cover h-48 w-48">
                         </a>
