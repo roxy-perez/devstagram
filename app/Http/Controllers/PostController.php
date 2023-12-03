@@ -11,7 +11,7 @@ class PostController extends Controller
     public function __construct()
     {
         // only authenticated users can access this controller
-        $this->middleware(['auth']);
+        $this->middleware('auth')->except(['show', 'index']);
     }
 
     public function index(User $user)
@@ -50,6 +50,7 @@ class PostController extends Controller
     {
         return view('posts.show', [
             'post' => $post,
+            'user' => $user,
         ]);
     }
 }

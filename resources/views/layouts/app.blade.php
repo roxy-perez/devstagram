@@ -87,8 +87,7 @@
                     before:bg-sky-400
                     before:rounded-full
                     hover:before:w-full
-                    hover:before:opacity-100">Crear
-                        cuenta</a>
+                    hover:before:opacity-100">Crear cuenta</a>
                 </nav>
 
             @endguest

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ImageController;
@@ -17,17 +18,25 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'store']);
+Route::controller(RegisterController::class)->group(function () {
+    Route::get('/register', 'index')->name('register');
+    Route::post('/register', 'store');
+});
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'store']);
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/login', 'index')->name('login');
+    Route::post('/login', 'store');
+});
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-Route::get('/{user:username}/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::controller(PostController::class)->group(function () {
+    Route::get('/{user:username}', 'index')->name('posts.index');
+    Route::get('/posts/create', 'create')->name('posts.create');
+    Route::post('/posts', 'store')->name('posts.store');
+    Route::get('/{user:username}/posts/{post}', 'show')->name('posts.show');
+});
+
+Route::post('/{user:username}/posts/{post}', [CommentController::class, 'store'])->name('comments.store');
 
 Route::post('/images', [ImageController::class, 'store'])->name('images.store');
