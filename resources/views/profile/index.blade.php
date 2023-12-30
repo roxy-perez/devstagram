@@ -21,6 +21,36 @@
                 </div>
 
                 <div class="mb-5">
+                    <label for="email" class="mb-2 block uupercase text-gray-500 font-bold">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Tu correo electrónico"
+                        class="border rounded-lg border-fuchsia-300 p-2 w-full" @error('email') border-red-500 @enderror
+                        value="{{ auth()->user()->email }}" />
+
+                    @error('email')
+                        <span
+                            class="bg-red-400 text-white my-2 rounded-lg p-2 text-sm text-center w-full">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="mb-5">
+                    <label for="password" class="mb-2 block uupercase text-gray-500 font-bold">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Nueva contraseña"
+                        class="border rounded-lg border-fuchsia-300 p-2 w-full" @error('password') @enderror />
+
+                    @error('password')
+                        <span
+                            class="bg-red-400 text-white my-2 rounded-lg p-2 text-sm text-center w-full">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="mb-5">
+                    <label for="password_confirmation" class="mb-2 block uupercase text-gray-500 font-bold">Confirmar
+                        password</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation"
+                        placeholder="Repite tu contraseña" class="border rounded-lg border-fuchsia-300 p-2 w-full" />
+                </div>
+
+                <div class="mb-5">
                     <label for="image" class="mb-2 block uupercase text-gray-500 font-bold">Imagen de perfil</label>
                     <input type="file" id="image" name="image"
                         class="border rounded-lg border-fuchsia-300 p-2 w-full" value="" accept=".jpg, .jpeg, .png" />
