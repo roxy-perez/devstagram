@@ -31,7 +31,7 @@
                     {{ $user->followers->count() }} <span class="font-normal">@choice('Seguidor|Seguidores', $user->followers->count())</span>
                 </p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    {{ $user->following->count() }} <span class="font-normal">Siguiendo</span>
+                    {{ $user->follows->count() }} <span class="font-normal">Siguiendo</span>
                 </p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
                     {{ $user->posts->count() }} <span class="font-normal">Post</span>
@@ -64,26 +64,8 @@
             {{ session('success') }}
         </div>
     @endif
-
     <section class="container mx-auto mt-10">
         <h2 class="text-center text-4xl font-bold text-gray-800 my-10">Publicaciones</h2>
-        @if ($posts->count())
-            <div class="flex md:flex-cols-2 lg:grid-cols-3 xl:flex-cols-4 justify-center gap-4">
-                @foreach ($posts as $post)
-                    <div>
-                        <a href="{{ route('posts.show', ['post' => $post, 'user' => $user]) }}">
-                            <img src="{{ asset('uploads') . '/' . $post->image }}"
-                                alt="Imagen del post {{ $post->titile }}"
-                                class="rounded-2xl ring-2 ring-sky-500 object-cover h-48 w-48">
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-            <div class="my-4">
-                {{ $posts->links('pagination::tailwind') }}
-            </div>
-        @else
-            <p class="text-center text-sm font-mono font-bold text-gray-800 uppercase">No hay publicaciones</p>
-        @endif
+        <x-list-post :posts="$posts" />
     </section>
 @endsection

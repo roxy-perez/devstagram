@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
@@ -18,9 +19,7 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', HomeController::class)->name('home');
 
 Route::controller(RegisterController::class)->group(function () {
     Route::get('/register', 'index')->name('register');
